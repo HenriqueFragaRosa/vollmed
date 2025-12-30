@@ -177,7 +177,7 @@ Para rodar essa aplicação, você vai precisar ter instalado:
     }
     ```
 
-### 2. Cadastrar médico
+### 6. Cadastrar médico
 * **Método:** `POST`
 * **URL:** `/pacientes`
 * **Corpo da Requisição:**
@@ -201,7 +201,7 @@ Para rodar essa aplicação, você vai precisar ter instalado:
     ```
 
 
-### 3. Atualizar paciente
+### 7. Atualizar paciente
 * **Método:** `PUT`
 * **URL:** `/pacientes/{id}`
 * **Corpo da Requisição:**
@@ -222,6 +222,6 @@ Para rodar essa aplicação, você vai precisar ter instalado:
     }
     ```
 
-### 4. Deletar paciente
+### 8. Deletar paciente
 * **Método:** `DELETE`
 * **URL:** `/pacientes/{id}`
