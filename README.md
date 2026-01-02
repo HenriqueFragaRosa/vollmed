@@ -15,6 +15,7 @@ A aplicação utiliza **PostgreSQL** como banco de dados relacional para persist
 
 - [x] CRUD de médicos
 - [x] CRUD de pacientes
+- [ ] Autenticação de usuários via JWT
 
 ## 🚀 Tecnologias Utilizadas
 
