@@ -41,15 +41,31 @@ public class PacienteController {
 
     @PutMapping("{id}")
     @Transactional
-    public void atualizar(@RequestBody @Valid DadosAtualizacaoPaciente dados, @PathVariable Long id) {
+    public ResponseEntity atualizar(@RequestBody @Valid DadosAtualizacaoPaciente dados, @PathVariable Long id) {
         var paciente = this.repository.getReferenceById(id);
         paciente.atualizarInformacoes(dados);
+
+        return ResponseEntity.ok(new DadosDetalhamentoPaciente(paciente));
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity detalhar(@PathVariable Long id) {
+        try {
+            var paciente = this.repository.findByAtivoTrueAndId(id);
+            DadosDetalhamentoPaciente detalhamentoPaciente = new DadosDetalhamentoPaciente(paciente);
+
+            return ResponseEntity.ok(detalhamentoPaciente);
+        } catch (NullPointerException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @DeleteMapping("{id}")
     @Transactional
-    public void deletar(@PathVariable Long id) {
+    public ResponseEntity deletar(@PathVariable Long id) {
         var paciente = this.repository.getReferenceById(id);
         paciente.deletar();
+
+        return ResponseEntity.noContent().build();
     }
 }

@@ -57,9 +57,13 @@ public class MedicoController {
 
     @GetMapping("{id}")
     public ResponseEntity detalhar(@PathVariable Long id) {
-        var medico = this.repository.getReferenceById(id);
-        DadosDetalhamentoMedico detalhamento = new DadosDetalhamentoMedico(medico);
+        try {
+            var medico = this.repository.findByAtivoTrueAndId(id);
+            DadosDetalhamentoMedico detalhamento = new DadosDetalhamentoMedico(medico);
 
-        return ResponseEntity.ok(detalhamento);
+            return ResponseEntity.ok(detalhamento);
+        } catch (NullPointerException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }
